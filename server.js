@@ -75,11 +75,11 @@ app.get("/:studentId/:number", (req, res) => {
   if (numValue == mean) {
     res.json({
       status: "OK",
-      message: "Number is valid for this distribution",
+      message: "Correct number",
     });
   } else {
     res.status(400).json({
-      error: "Number is outside the expected distribution range",
+      error: "Wrong number",
       received: numValue,
     });
   }
