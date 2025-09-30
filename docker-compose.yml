@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  student-api:
+    build: .
+    ports:
+      - "13490:13490"
+    environment:
+      - PORT=13490
+    restart: unless-stopped
