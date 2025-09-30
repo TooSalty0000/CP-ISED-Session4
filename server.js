@@ -19,7 +19,7 @@ function getStudentMean(studentId) {
 }
 
 // Generate random number from normal distribution using Box-Muller transform
-function generateNormalRandom(mean, stdDev = 15) {
+function generateNormalRandom(mean, stdDev = 3) {
   const u1 = Math.random();
   const u2 = Math.random();
   const z0 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
@@ -71,11 +71,8 @@ app.get("/:studentId/:number", (req, res) => {
   const mean = getStudentMean(studentId);
 
   // Check if number is within acceptable range of the mean (within 3 standard deviations)
-  const stdDev = 15;
-  const lowerBound = mean - 3 * stdDev;
-  const upperBound = mean + 3 * stdDev;
 
-  if (numValue >= lowerBound && numValue <= upperBound) {
+  if (numValue == mean) {
     res.json({
       status: "OK",
       message: "Number is valid for this distribution",
@@ -83,7 +80,6 @@ app.get("/:studentId/:number", (req, res) => {
   } else {
     res.status(400).json({
       error: "Number is outside the expected distribution range",
-      expected: { mean, range: [lowerBound, upperBound] },
       received: numValue,
     });
   }
