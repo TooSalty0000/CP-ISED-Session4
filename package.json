@@ -1,0 +1,13 @@
+{
+  "name": "student-api-server",
+  "version": "1.0.0",
+  "description": "Basic server with student distribution endpoints",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
